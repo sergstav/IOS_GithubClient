@@ -14,6 +14,8 @@
 		7A6390461A2BFDA700B36E1F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A6390441A2BFDA700B36E1F /* LaunchScreen.xib */; };
 		7A6390521A2BFDA700B36E1F /* GithubClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6390511A2BFDA700B36E1F /* GithubClientTests.m */; };
 		7A63905D1A2BFEFF00B36E1F /* UserListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A63905C1A2BFEFF00B36E1F /* UserListTableViewController.m */; };
+		7A6390611A2BFFB200B36E1F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6390601A2BFFB200B36E1F /* User.m */; };
+		7A6390641A2C017800B36E1F /* Repository.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6390631A2C017800B36E1F /* Repository.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		7A6390511A2BFDA700B36E1F /* GithubClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GithubClientTests.m; sourceTree = "<group>"; };
 		7A63905B1A2BFEFF00B36E1F /* UserListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserListTableViewController.h; sourceTree = "<group>"; };
 		7A63905C1A2BFEFF00B36E1F /* UserListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserListTableViewController.m; sourceTree = "<group>"; };
+		7A63905F1A2BFFB200B36E1F /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		7A6390601A2BFFB200B36E1F /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		7A6390621A2C017800B36E1F /* Repository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repository.h; sourceTree = "<group>"; };
+		7A6390631A2C017800B36E1F /* Repository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repository.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,7 @@
 		7A6390341A2BFDA700B36E1F /* GithubClient */ = {
 			isa = PBXGroup;
 			children = (
+				7A63905E1A2BFFA300B36E1F /* Model */,
 				7A63905B1A2BFEFF00B36E1F /* UserListTableViewController.h */,
 				7A63905C1A2BFEFF00B36E1F /* UserListTableViewController.m */,
 				7A6390391A2BFDA700B36E1F /* AppDelegate.h */,
@@ -117,6 +124,17 @@
 				7A6390501A2BFDA700B36E1F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7A63905E1A2BFFA300B36E1F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A63905F1A2BFFB200B36E1F /* User.h */,
+				7A6390601A2BFFB200B36E1F /* User.m */,
+				7A6390621A2C017800B36E1F /* Repository.h */,
+				7A6390631A2C017800B36E1F /* Repository.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +237,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A6390611A2BFFB200B36E1F /* User.m in Sources */,
+				7A6390641A2C017800B36E1F /* Repository.m in Sources */,
 				7A63905D1A2BFEFF00B36E1F /* UserListTableViewController.m in Sources */,
 				7A63903B1A2BFDA700B36E1F /* AppDelegate.m in Sources */,
 				7A6390381A2BFDA700B36E1F /* main.m in Sources */,
@@ -412,6 +432,7 @@
 				7A6390571A2BFDA700B36E1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7A6390581A2BFDA700B36E1F /* Build configuration list for PBXNativeTarget "GithubClientTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +441,7 @@
 				7A63905A1A2BFDA700B36E1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
