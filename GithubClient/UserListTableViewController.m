@@ -27,6 +27,12 @@
     
     [self loadUsers];
     
+    UIRefreshControl *refreshControls = [[UIRefreshControl alloc] init];
+    [refreshControls addTarget:self action: @selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self setRefreshControl: refreshControls];
+    
+    [self.tableView addSubview:refreshControls];
+    
 }
 
 - (void)configureRestKit
@@ -38,6 +44,7 @@
     
     RKObjectMapping *usersMapping = [RKObjectMapping mappingForClass:[User class]];
     [usersMapping addAttributeMappingsFromArray:@[@"login"]];
+    [usersMapping addAttributeMappingsFromArray:@[@"avatar_url"]];
     
     RKResponseDescriptor *responceDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:usersMapping method:RKRequestMethodGET pathPattern:@"/users" keyPath:@"" statusCodes:[NSIndexSet indexSetWithIndex:200]];
     
@@ -46,10 +53,6 @@
 
 - (void)loadUsers
 {
-    User *user = [[User alloc] init];
-    
-    NSDictionary *queryParams = @{@"login" : @""};
-    
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/users" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
      {
          _users = mappingResult.array;
@@ -62,6 +65,12 @@
          NSLog(@"some error %@", error);
      }
      ];
+}
+
+- (void) refresh:(id) sender
+{
+    [self loadUsers];
+    [sender endRefreshing];
 }
 
 
