@@ -10,4 +10,6 @@
 
 @interface UserListTableViewController : UITableViewController
 
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue;
+
 @end

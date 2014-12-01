@@ -7,22 +7,64 @@
 //
 
 #import "SingleUserTableViewController.h"
+#import <RestKit/RestKit.h>
+#import "Repository.h"
 
 @interface SingleUserTableViewController ()
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+
+@property NSArray *repositories;
 
 @end
 
 @implementation SingleUserTableViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [self configureRestKit];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self loadRepos];
 }
+
+//Вынести в один файлик!!! В UserList'e такой же метод есть!
+- (void) configureRestKit
+{
+    NSURL *apiUrl = [NSURL URLWithString:@"https://api.github.com"];
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL: apiUrl];
+    
+    RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient: client];
+    
+    RKObjectMapping *reposMapping = [RKObjectMapping mappingForClass:[Repository class]];
+    [reposMapping addAttributeMappingsFromArray:@[@"name"]];
+    
+    RKResponseDescriptor *responceDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:reposMapping method:RKRequestMethodGET pathPattern:@"/users/{username}/repos" keyPath:@"" statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    
+    [objectManager addResponseDescriptor:responceDescriptor];
+}
+
+- (void) loadRepos
+{
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/repos" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
+     {
+         _repositories = mappingResult.array;
+         [self.tableView reloadData];
+     }
+     
+     
+    failure:^(RKObjectRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"some error %@", error);
+     }
+     ];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -31,27 +73,31 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+
+    return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+
+    return _repositories.count;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SingleUserCell" forIndexPath:indexPath];
+    
+     Repository *rep = _repositories[indexPath.row];
+     
+     cell.textLabel.text = rep.name;
     
     // Configure the cell...
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
