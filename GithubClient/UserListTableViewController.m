@@ -7,6 +7,8 @@
 //
 
 #import "UserListTableViewController.h"
+#import <RestKit/RestKit.h>
+#import "User.h"
 
 @interface UserListTableViewController ()
 
@@ -21,7 +23,47 @@
 {
     [super viewDidLoad];
     
+    [self configureRestKit];
+    
+    [self loadUsers];
+    
 }
+
+- (void)configureRestKit
+{
+    NSURL *apiUrl = [NSURL URLWithString:@"https://api.github.com"];
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL: apiUrl];
+    
+    RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient: client];
+    
+    RKObjectMapping *usersMapping = [RKObjectMapping mappingForClass:[User class]];
+    [usersMapping addAttributeMappingsFromArray:@[@"login"]];
+    
+    RKResponseDescriptor *responceDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:usersMapping method:RKRequestMethodGET pathPattern:@"/users" keyPath:@"" statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    
+    [objectManager addResponseDescriptor:responceDescriptor];
+}
+
+- (void)loadUsers
+{
+    User *user = [[User alloc] init];
+    
+    NSDictionary *queryParams = @{@"login" : @""};
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/users" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
+     {
+         _users = mappingResult.array;
+         [self.tableView reloadData];
+     }
+     
+     
+    failure:^(RKObjectRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"some error %@", error);
+     }
+     ];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -44,6 +86,11 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
+    User *user = _users[indexPath.row];
+//    cell.textLabel.text = user.login;
+    
+    UILabel *loginLabel = (UILabel*)[cell viewWithTag:101];
+    loginLabel.text = user.login;
     
     return cell;
 }
