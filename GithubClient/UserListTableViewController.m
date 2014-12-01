@@ -101,6 +101,10 @@
     UILabel *loginLabel = (UILabel*)[cell viewWithTag:101];
     loginLabel.text = user.login;
     
+    NSURL *avatar_url = [NSURL URLWithString:user.avatar_url];
+    [cell.imageView setImageWithURL:avatar_url placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    
+    
     return cell;
 }
 
