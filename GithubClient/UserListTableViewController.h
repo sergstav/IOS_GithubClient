@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  UserListTableViewController.h
 //  GithubClient
 //
 //  Created by Sergey Stavitckii on 12/1/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface UserListTableViewController : UITableViewController
 
 @end
-
