@@ -17,6 +17,8 @@
 		7A6390611A2BFFB200B36E1F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6390601A2BFFB200B36E1F /* User.m */; };
 		7A6390641A2C017800B36E1F /* Repository.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6390631A2C017800B36E1F /* Repository.m */; };
 		7ADFDE0F1A2C151200CB1BCA /* SingleUserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFDE0E1A2C151200CB1BCA /* SingleUserTableViewController.m */; };
+		7ADFDE131A2C1BF500CB1BCA /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ADFDE111A2C1BF500CB1BCA /* placeholder.png */; };
+		7ADFDE141A2C1BF500CB1BCA /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ADFDE121A2C1BF500CB1BCA /* placeholder@2x.png */; };
 		B6F925A7451E7E31F935AD01 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 150C3FC933089B6E094BFBBE /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,8 @@
 		7A6390631A2C017800B36E1F /* Repository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repository.m; sourceTree = "<group>"; };
 		7ADFDE0D1A2C151200CB1BCA /* SingleUserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleUserTableViewController.h; sourceTree = "<group>"; };
 		7ADFDE0E1A2C151200CB1BCA /* SingleUserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleUserTableViewController.m; sourceTree = "<group>"; };
+		7ADFDE111A2C1BF500CB1BCA /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		7ADFDE121A2C1BF500CB1BCA /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
 		94A5D41F5F3978801564EBE0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,11 +101,9 @@
 		7A6390341A2BFDA700B36E1F /* GithubClient */ = {
 			isa = PBXGroup;
 			children = (
+				7ADFDE151A2C1C0700CB1BCA /* Views */,
+				7ADFDE101A2C1BE500CB1BCA /* Resources */,
 				7A63905E1A2BFFA300B36E1F /* Model */,
-				7A63905B1A2BFEFF00B36E1F /* UserListTableViewController.h */,
-				7A63905C1A2BFEFF00B36E1F /* UserListTableViewController.m */,
-				7ADFDE0D1A2C151200CB1BCA /* SingleUserTableViewController.h */,
-				7ADFDE0E1A2C151200CB1BCA /* SingleUserTableViewController.m */,
 				7A6390391A2BFDA700B36E1F /* AppDelegate.h */,
 				7A63903A1A2BFDA700B36E1F /* AppDelegate.m */,
 				7A63903F1A2BFDA700B36E1F /* Main.storyboard */,
@@ -147,6 +149,26 @@
 				7A6390631A2C017800B36E1F /* Repository.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		7ADFDE101A2C1BE500CB1BCA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7ADFDE111A2C1BF500CB1BCA /* placeholder.png */,
+				7ADFDE121A2C1BF500CB1BCA /* placeholder@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		7ADFDE151A2C1C0700CB1BCA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A63905B1A2BFEFF00B36E1F /* UserListTableViewController.h */,
+				7A63905C1A2BFEFF00B36E1F /* UserListTableViewController.m */,
+				7ADFDE0D1A2C151200CB1BCA /* SingleUserTableViewController.h */,
+				7ADFDE0E1A2C151200CB1BCA /* SingleUserTableViewController.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		83188940CA9E3C32724D6898 /* Frameworks */ = {
@@ -248,7 +270,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ADFDE141A2C1BF500CB1BCA /* placeholder@2x.png in Resources */,
 				7A6390411A2BFDA700B36E1F /* Main.storyboard in Resources */,
+				7ADFDE131A2C1BF500CB1BCA /* placeholder.png in Resources */,
 				7A6390461A2BFDA700B36E1F /* LaunchScreen.xib in Resources */,
 				7A6390431A2BFDA700B36E1F /* Images.xcassets in Resources */,
 			);
